@@ -1,0 +1,60 @@
+:root{
+    --color-primario:#4CAF50;
+    --color-secundario:#FAFAFA;
+    --color-terciario: #37474F;
+    --color-cuarto:#90CAF9;
+    --titulares: font-family: 'Poppins', sans-serif;
+    --texto: font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    background-color: var(--color-secundario);
+    font-family: var(--texto);
+    color: var(--color-terciario);
+    font-size: 1.5rem;
+}
+
+a{
+    text-decoration: none;
+    color: var(--color-terciario);
+}
+
+h5 {
+    font-size: 1.5rem;
+}
+
+.titulo {
+    font-family: var(--titulares);
+    font-size: 2.5rem;
+    margin-top: 2%;
+}
+
+.navbar{
+    background-color: var(--color-primario);
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2%;
+}
+
+.navbar_orientacion{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+}
+
+.navbar_img{
+    width: 3rem;
+    margin-left: .5rem;
+}
+
+.cursos{
+    background-color: var(--color-cuarto);
+    margin: 5%;
+}
+
+.card{
+    padding: 1%;
+    margin: 2%;
+}
