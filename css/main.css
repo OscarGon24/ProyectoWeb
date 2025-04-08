@@ -50,3 +50,42 @@ form {
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
+/*Cosas de inscripciones*/
+.table-hover tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.1);
+    cursor: pointer;
+}
+.btn-inscribir {
+    background-color: #0d6efd;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border: none;
+}
+.btn-inscribir:hover {
+    background-color: #0b5ed7;
+    color: white;
+}
+.search-box {
+    max-width: 500px;
+    margin: 0 auto 30px;
+}
+.filter-section {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.badge-facultad {
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+}
+.table-responsive {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
