@@ -1,0 +1,126 @@
+body {
+    background-color: #f8f9fa;
+  }
+  
+  .header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #2196F3;
+  }
+  
+  .toggle-buttons .btn {
+    border-radius: 20px;
+    border: 2px solid #4CAF50;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+  }
+  
+  .toggle-buttons .btn.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .btn-add {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 20px;
+    font-weight: bold;
+  }
+  
+  .course-table {
+    border: none;
+    text-align: center;
+  }
+  
+  .course-table td {
+    border: 2px solid black;
+    padding: 15px;
+    font-weight: bold;
+  }
+  
+  .table-header {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+  }
+
+  body {
+    background-color: #f8f9fa;
+  }
+  
+  .header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #2196F3;
+  }
+  
+  .toggle-buttons .btn {
+    border-radius: 20px;
+    border: 2px solid #4CAF50;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+  }
+  
+  .toggle-buttons .btn.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .btn-save {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 20px;
+    font-weight: bold;
+    border: none;
+    padding: 6px 20px;
+  }
+  
+  .table-header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: 1px solid #4CAF50;
+  }
+  
+  .student-table {
+    border: none;
+    text-align: center;
+    margin: 0 auto;
+  }
+  
+  .student-table td {
+    border: 2px solid black;
+    padding: 10px;
+    font-weight: normal;
+  }
+  
+  .student-table:first-child {
+    border: 2px solid purple;
+  }
+  
+
+
+  
+  
