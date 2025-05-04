@@ -5,10 +5,10 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('usernameDisplay').textContent = username;
     }
 
-    // Datos de cursos disponibles (en una app real vendrían de una API)
+    // Datos de cursos disponibles
     let cursosDisponibles = JSON.parse(localStorage.getItem('cursos')) || [];
     
-    // Si no hay cursos, cargar algunos de ejemplo
+    // Cursos de ejemplo si no hay datos
     if (cursosDisponibles.length === 0) {
         cursosDisponibles = [
             {
@@ -30,8 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 creditos: 3,
                 cuposDisponibles: 8,
                 cuposTotales: 25
-            },
-            // ... otros cursos de ejemplo
+            }
         ];
         localStorage.setItem('cursos', JSON.stringify(cursosDisponibles));
     }
@@ -47,9 +46,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function renderTable() {
         const tbody = document.querySelector('tbody');
+        if (!tbody) return;
+        
         tbody.innerHTML = '';
 
-        // Calcular índices para la paginación
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
         const cursosToShow = filteredCursos.slice(startIndex, endIndex);
@@ -63,18 +63,13 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Renderizar cada curso
         cursosToShow.forEach(curso => {
             const porcentajeCupos = Math.round((curso.cuposDisponibles / curso.cuposTotales) * 100);
             let barColor = 'bg-success';
             
-            if (porcentajeCupos < 20) {
-                barColor = 'bg-danger';
-            } else if (porcentajeCupos < 50) {
-                barColor = 'bg-warning';
-            }
+            if (porcentajeCupos < 20) barColor = 'bg-danger';
+            else if (porcentajeCupos < 50) barColor = 'bg-warning';
 
-            // Determinar color del badge según facultad
             let badgeColor = 'bg-primary';
             switch(curso.facultad) {
                 case 'Artes': badgeColor = 'bg-success'; break;
@@ -106,14 +101,15 @@ document.addEventListener('DOMContentLoaded', function() {
             tbody.appendChild(row);
         });
 
-        // Actualizar paginación
         updatePagination();
     }
 
     function updatePagination() {
-        const totalPages = Math.ceil(filteredCursos.length / itemsPerPage);
         const pagination = document.querySelector('.pagination');
+        if (!pagination) return;
+        
         pagination.innerHTML = '';
+        const totalPages = Math.ceil(filteredCursos.length / itemsPerPage);
 
         // Botón Anterior
         const prevItem = document.createElement('li');
@@ -156,37 +152,49 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function setupEventListeners() {
-        // Buscar curso
-        document.querySelector('.btn-outline-secondary').addEventListener('click', function() {
-            const searchTerm = document.querySelector('.form-control').value.toLowerCase();
-            filterCursos(searchTerm);
-        });
+        // Buscar curso - Verificar que el elemento existe primero
+        const searchBtn = document.querySelector('.btn-outline-secondary');
+        if (searchBtn) {
+            searchBtn.addEventListener('click', function() {
+                const searchTerm = document.querySelector('.form-control').value.toLowerCase();
+                filterCursos(searchTerm);
+            });
+        }
 
-        // Filtro por facultad
-        document.querySelectorAll('.form-select')[0].addEventListener('change', function() {
-            filterCursos();
-        });
+        // Filtros - Usar selectores más específicos
+        const filterFacultad = document.querySelector('.filter-section select:first-child');
+        const filterHorario = document.querySelector('.filter-section select:last-child');
+        
+        if (filterFacultad) {
+            filterFacultad.addEventListener('change', function() {
+                filterCursos();
+            });
+        }
+        
+        if (filterHorario) {
+            filterHorario.addEventListener('change', function() {
+                filterCursos();
+            });
+        }
 
-        // Filtro por horario
-        document.querySelectorAll('.form-select')[1].addEventListener('change', function() {
-            filterCursos();
-        });
-
-        // Manejar clic en botones de inscripción (delegación de eventos)
-        document.querySelector('tbody').addEventListener('click', function(e) {
-            if (e.target.classList.contains('btn-inscribir') && !e.target.disabled) {
-                inscribirCurso(e);
-            }
-        });
+        // Inscripción - Delegación de eventos mejorada
+        const tbody = document.querySelector('tbody');
+        if (tbody) {
+            tbody.addEventListener('click', function(e) {
+                if (e.target.classList.contains('btn-inscribir') && !e.target.disabled) {
+                    inscribirCurso(e);
+                }
+            });
+        }
     }
 
     function filterCursos(searchTerm = '') {
-        const facultad = document.querySelectorAll('.form-select')[0].value;
-        const horario = document.querySelectorAll('.form-select')[1].value;
+        const facultad = document.querySelector('.filter-section select:first-child')?.value || 'Filtrar por facultad';
+        const horario = document.querySelector('.filter-section select:last-child')?.value || 'Filtrar por horario';
 
         filteredCursos = cursosDisponibles.filter(curso => {
             const matchesSearch = curso.nombre.toLowerCase().includes(searchTerm) || 
-                                 curso.profesor.toLowerCase().includes(searchTerm);
+                               curso.profesor.toLowerCase().includes(searchTerm);
             const matchesFacultad = facultad === 'Filtrar por facultad' || curso.facultad === facultad;
             const matchesHorario = horario === 'Filtrar por horario' || 
                                  (horario === 'Mañana' && curso.horario.includes('8:00')) ||
@@ -201,38 +209,31 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function inscribirCurso(e) {
-        // Verificar si hay usuario logueado
         if (!sessionStorage.getItem('username')) {
             alert('Debes iniciar sesión para inscribirte en un curso');
             return;
         }
-
+    
         const row = e.target.closest('tr');
         const nombreCurso = row.querySelector('td:first-child strong').textContent;
         
-        // Confirmar inscripción
         if (confirm(`¿Estás seguro que deseas inscribirte en ${nombreCurso}?`)) {
-            // Encontrar el curso en el array
             const cursoIndex = cursosDisponibles.findIndex(c => c.nombre === nombreCurso);
             
             if (cursoIndex !== -1 && cursosDisponibles[cursoIndex].cuposDisponibles > 0) {
-                // Reducir cupos disponibles
+                // 1. Actualizar los datos
                 cursosDisponibles[cursoIndex].cuposDisponibles--;
-                
-                // Actualizar localStorage
                 localStorage.setItem('cursos', JSON.stringify(cursosDisponibles));
                 
-                // Actualizar tabla
-                filterCursos();
+                // 2. Actualizar la lista filtrada manteniendo los filtros actuales
+                const currentFilters = getCurrentFilters();
+                applyFilters(currentFilters.searchTerm, currentFilters.facultad, currentFilters.horario);
                 
-                // Guardar inscripción en el perfil del usuario (simulado)
+                // 3. Guardar la inscripción del usuario
                 const userInscripciones = JSON.parse(localStorage.getItem('inscripciones')) || {};
                 const username = sessionStorage.getItem('username');
                 
-                if (!userInscripciones[username]) {
-                    userInscripciones[username] = [];
-                }
-                
+                userInscripciones[username] = userInscripciones[username] || [];
                 userInscripciones[username].push({
                     curso: nombreCurso,
                     fecha: new Date().toLocaleDateString(),
@@ -246,5 +247,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('No hay cupos disponibles para este curso');
             }
         }
+        applyFilters();
+    }
+    
+    // Nueva función para obtener los filtros actuales
+    function getCurrentFilters() {
+        return {
+            searchTerm: document.querySelector('.form-control')?.value.toLowerCase() || '',
+            facultad: document.querySelector('.filter-section select:first-child')?.value || 'Filtrar por facultad',
+            horario: document.querySelector('.filter-section select:last-child')?.value || 'Filtrar por horario'
+        };
+    }
+    
+    // Nueva función para aplicar filtros
+    function applyFilters(searchTerm = '', facultad = 'Filtrar por facultad', horario = 'Filtrar por horario') {
+        filteredCursos = cursosDisponibles.filter(curso => {
+            const matchesSearch = curso.nombre.toLowerCase().includes(searchTerm) || 
+                               curso.profesor.toLowerCase().includes(searchTerm);
+                               const matchesFacultad = !facultad || facultad === 'Filtrar por facultad' || curso.facultad === facultad;
+                               const matchesHorario = !horario || horario === 'Filtrar por horario' ||                                 
+                                 (horario === 'Mañana' && curso.horario.includes('8:00')) ||
+                                 (horario === 'Tarde' && (curso.horario.includes('14:00') || curso.horario.includes('16:00'))) ||
+                                 (horario === 'Noche' && curso.horario.includes('19:00'));
+    
+            return matchesSearch && matchesFacultad && matchesHorario;
+        });
+    
+        currentPage = 1;
+        renderTable();
+    }
+    
+    // Modificar la función filterCursos para usar applyFilters
+    function filterCursos(searchTerm = '') {
+        const currentFilters = getCurrentFilters();
+        applyFilters(searchTerm, currentFilters.facultad, currentFilters.horario);
     }
 });
