@@ -1,110 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" ></script>
-    <link rel="stylesheet" href="css/cursosMenuEIndividual.css">
-    <title>Cursos</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cursos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="css/cursosMenuEIndividual.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg">
-            <div class="navbar container-fluid">
-                <a class="navbar-brand" href="cursosMenu.html"><h3>Universidad</h3></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                      <a class="nav-link active" aria-current="page" href="cursosMenu.html"><h5>Inicio</h5></a>
-                      <a class="nav-link" href="#"><h5>Calificaciones</h5></a>
-                      <a class="nav-link" href="mensajeria.html"><h5>Mensajes</h5></a>
-                    </div>
-                    <div class="navbar_orientacion">
-                        <a class="nav-link" href="#">
-                          <img class="navbar_img" src="img/user.png" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
+  <header>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="cursosMenu.html"><h3>Universidad</h3></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" href="cursosMenu.html"><h5>Inicio</h5></a>
+            <a class="nav-link" href="#"><h5>Calificaciones</h5></a>
+            <a class="nav-link" href="mensajeria.html"><h5>Mensajes</h5></a>
+          </div>
+          <div>
+            <a class="nav-link" href="#"><img class="navbar_img" src="img/user.png" alt="Usuario" /></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-    <section class="cursos">
-        <div class="container d-none d-md-block">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h1 class="titulo">Cursos</h1>
-                <a href="inscripciones.html" class="enlace"><h3>Inscribir</h3></a>
+  <section class="cursos py-5">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="titulo">Cursos</h1>
+        <a href="inscripciones.html" class="enlace"><h3>Inscribir</h3></a>
+      </div>
+      <div class="row">
+        <!-- Curso 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card">
+            <img src="img/Admin.png" class="card-img-top" alt="Curso Imagen" />
+            <div class="card-body">
+              <a href="cursosIndividual.html"><h5 class="card-title">Administración</h5></a>
+              <a href="#"><p class="card-text">Profesor: Juan Pérez</p></a>
+              <a href="#"><p class="card-text">Grupo: A</p></a>
             </div>
-            <div class="row mt-5 justify-content-center">
-                <div class="col-5 card">
-                    <div class="card-body">
-                      <a href="cursosIndividual.html"><h5 class="card-title">Cursos</h5></a>
-                      <a href="#"><p class="card-text">Profesor:</p></a>
-                      <a href="#"><p class="card-text">Grupo:</p></a>
-                    </div>
-                </div>
-                <div class="col-5 card">
-                    <div class="card-body">
-                      <a href="cursosIndividual.html"><h5 class="card-title">Cursos</h5></a>
-                      <a href="#"><p class="card-text">Profesor:</p></a>
-                      <a href="#"><p class="card-text">Grupo:</p></a>
-                    </div>
-                </div>
-                <div class="col-5 card">
-                    <div class="card-body">
-                      <a href="cursosIndividual.html"><h5 class="card-title">Cursos</h5></a>
-                      <a href="#"><p class="card-text">Profesor:</p></a>
-                      <a href="#"><p class="card-text">Grupo:</p></a>
-                    </div>
-                </div>
-                <div class="col-5 card">
-                    <div class="card-body">
-                      <a href="cursosIndividual.html"><h5 class="card-title">Cursos</h5></a>
-                      <a href="#"><p class="card-text">Profesor:</p></a>
-                      <a href="#"><p class="card-text">Grupo:</p></a>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-        <div class=" container d-block d-md-none">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h1 class="titulo">Cursos</h1>
-                <a href="inscripciones.html" class="enlace"><h3>Inscribir</h3></a>
+
+        <!-- Curso 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card">
+            <img src="img/DMovil.jpg" class="card-img-top" alt="Curso Imagen" />
+            <div class="card-body">
+              <a href="cursosIndividual.html"><h5 class="card-title">Desarrollo de aplicaciones móviles</h5></a>
+              <a href="#"><p class="card-text">Profesor: Ana Gómez</p></a>
+              <a href="#"><p class="card-text">Grupo: B</p></a>
             </div>
-            <div class="row mt-5 justify-content-center">
-                <div class="card resposivoCard">
-                    <div class="card-body">
-                      <a href="cursosIndividual.html"><h5 class="card-title">Cursos</h5></a>
-                      <a href="#"><p class="card-text">Profesor:</p></a>
-                      <a href="#"><p class="card-text">Grupo:</p></a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                      <a href="cursosIndividual.html"><h5 class="card-title">Cursos</h5></a>
-                      <a href="#"><p class="card-text">Profesor:</p></a>
-                      <a href="#"><p class="card-text">Grupo:</p></a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                      <a href="cursosIndividual.html"><h5 class="card-title">Cursos</h5></a>
-                      <a href="#"><p class="card-text">Profesor:</p></a>
-                      <a href="#"><p class="card-text">Grupo:</p></a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                      <a href="cursosIndividual.html"><h5 class="card-title">Cursos</h5></a>
-                      <a href="#"><p class="card-text">Profesor:</p></a>
-                      <a href="#"><p class="card-text">Grupo:</p></a>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
+
+        <!-- Curso 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card">
+            <img src="img/DWeb.jpg" class="card-img-top" alt="Curso Imagen" />
+            <div class="card-body">
+              <a href="cursosIndividual.html"><h5 class="card-title">Desarrollo de aplicaciones web</h5></a>
+              <a href="#"><p class="card-text">Profesor: Laura Martínez</p></a>
+              <a href="#"><p class="card-text">Grupo: C</p></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Curso 4 -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card">
+              <img src="img/HPsico.png" class="card-img-top" alt="Curso Imagen" />
+              <div class="card-body">
+                <a href="cursosIndividual.html"><h5 class="card-title">Habilidades psicosociales</h5></a>
+                <a href="#"><p class="card-text">Profesor: Ernesto Ceballos</p></a>
+                <a href="#"><p class="card-text">Grupo: D</p></a>
+              </div>
+            </div>
+          </div>
+        
+          <!-- Curso 5 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card">
+              <img src="img/Calculo.jpg" class="card-img-top" alt="Curso Imagen" />
+              <div class="card-body">
+                <a href="cursosIndividual.html"><h5 class="card-title">Calculo</h5></a>
+                <a href="#"><p class="card-text">Profesor: Oscar Gonzales</p></a>
+                <a href="#"><p class="card-text">Grupo: E</p></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Curso 6 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card">
+              <img src="img/Matematicas F.png" class="card-img-top" alt="Curso Imagen" />
+              <div class="card-body">
+                <a href="cursosIndividual.html"><h5 class="card-title">Matematicas financieras</h5></a>
+                <a href="#"><p class="card-text">Profesor: Laura Martínez</p></a>
+                <a href="#"><p class="card-text">Grupo: C</p></a>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
