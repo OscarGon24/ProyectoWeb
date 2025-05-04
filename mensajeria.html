@@ -20,37 +20,43 @@
     <h2 class="fw-bold">Mensajes</h2>
   </div>
 
+  <!-- Toggle para móvil -->
+  <div class="mobile-toggle d-md-none">
+    <button class="active" onclick="showSection('contacts')">Contactos</button>
+    <button onclick="showSection('chat')">Chat</button>
+  </div>
+
   <!-- Chat layout -->
   <div class="container-fluid px-3">
     <div class="chat-container">
       
       <!-- Sidebar -->
-      <div class="sidebar">
+      <div class="sidebar active" id="contacts-section">
         <div class="search-box">
           <input type="text" placeholder="Busqueda">
         </div>
         <div class="contact-list">
-          <!-- Contactos (agrega cuantos necesites) -->
-          <div class="contact">
+          <!-- Contactos -->
+          <div class="contact" onclick="showChat()">
             <img src="https://via.placeholder.com/35" alt="Avatar">
             <div>
               <div class="name">Nombre Dela Persona</div>
               <div class="preview">Nombre: Hola</div>
             </div>
           </div>
-          <div class="contact">
+          <div class="contact" onclick="showChat()">
             <img src="https://via.placeholder.com/35" alt="Avatar">
             <div>
               <div class="name">Nombre Dela Persona</div>
               <div class="preview">Nombre: Hola</div>
             </div>
           </div>
-          <!-- Copia este bloque para más contactos -->
+          <!-- Más contactos -->
         </div>
       </div>
 
       <!-- Chat principal -->
-      <div class="chat-area">
+      <div class="chat-area" id="chat-section">
         <div class="chat-header">
           <img src="https://via.placeholder.com/50" alt="Avatar">
           <div>
@@ -62,14 +68,6 @@
           <div class="message-left">
             Cuerpo del mensaje: Hola, como has estado?<br>
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
-            
           </div>
           <div class="message-right">
             Cuerpo del mensaje: Hola, como has estado?<br>
@@ -85,6 +83,33 @@
     </div>
   </div>
 
+  <script>
+    // Función para alternar entre secciones en móvil
+    function showSection(section) {
+      const contactsSection = document.getElementById('contacts-section');
+      const chatSection = document.getElementById('chat-section');
+      const buttons = document.querySelectorAll('.mobile-toggle button');
+      
+      if (section === 'contacts') {
+        contactsSection.classList.add('active');
+        chatSection.classList.remove('active');
+        buttons[0].classList.add('active');
+        buttons[1].classList.remove('active');
+      } else {
+        contactsSection.classList.remove('active');
+        chatSection.classList.add('active');
+        buttons[0].classList.remove('active');
+        buttons[1].classList.add('active');
+      }
+    }
+    
+    // Función para mostrar el chat cuando se selecciona un contacto (en móvil)
+    function showChat() {
+      if (window.innerWidth <= 768) {
+        showSection('chat');
+      }
+    }
+  </script>
+
 </body>
 </html>
-
