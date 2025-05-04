@@ -185,6 +185,25 @@ h1, h2, h3, h4, h5, h6,
   cursor: pointer;
 }
 
+.navbar {
+  background-color: #00695c;
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+  color: #fff !important;
+}
+
+.navbar .nav-link:hover {
+  text-decoration: underline;
+}
+
+.navbar_img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
 /***************** Modo móvil *****************/
 @media (max-width: 768px) {
   .chat-container {
