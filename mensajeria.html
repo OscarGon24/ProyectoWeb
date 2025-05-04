@@ -6,26 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/estilosmensajeria.css">
+  <script src="js/auth.js"></script>
   <script src="js/mensajeria.js"></script>
 </head>
 <body>
 
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="cursosMenu.html">Universidad</a>
+      <a class="navbar-brand" href="cursosMenu.html"><h3>Universidad</h3></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav me-auto">
-          <a class="nav-link active" href="cursosMenu.html">Inicio</a>
-          <a class="nav-link" href="#">Calificaciones</a>
-          <a class="nav-link" href="#">Mensajes</a>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" href="cursosMenu.html"><h5>Inicio</h5></a>
+          <a class="nav-link" href="mostrarCursos.html"><h5>Horarios</h5></a>
+          <a class="nav-link" href="inscripciones.html"><h5>Inscripciones</h5></a>
+          <a class="nav-link" href="mensajeria.html"><h5>Mensajes</h5></a>
         </div>
-        <div class="d-flex align-items-center">
-          <a class="nav-link" href="#">
-            <img src="img/user.png" alt="Usuario" class="rounded-circle" width="40" />
-          </a>
+        <div class="navbar-nav align-items-center">
+          <span class="nav-link me-3">Bienvenido, <span id="usernameDisplay"></span></span>
+          <a class="nav-link" href="#"><img class="navbar_img" src="img/user.png" alt="Usuario" /></a>
+          <button id="logoutButton" class="btn btn-outline-danger btn-sm">Cerrar sesión</button>
         </div>
       </div>
     </div>

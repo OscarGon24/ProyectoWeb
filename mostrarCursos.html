@@ -7,30 +7,31 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="css/cursosMenuEIndividual.css" />
+  <script src="js/auth.js"></script>
+  <script src="js/mostrarCursos.js"></script>
 </head>
 <body>
-  <header class="mb-4">
-    <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="cursosMenu.html">Universidad</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav me-auto">
-            <a class="nav-link active" href="cursosMenu.html">Inicio</a>
-            <a class="nav-link" href="#">Calificaciones</a>
-            <a class="nav-link" href="#">Mensajes</a>
-          </div>
-          <div class="d-flex align-items-center">
-            <a class="nav-link" href="#">
-              <img src="img/user.png" alt="Usuario" class="rounded-circle" width="40" />
-            </a>
-          </div>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="cursosMenu.html"><h3>Universidad</h3></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" href="cursosMenu.html"><h5>Inicio</h5></a>
+          <a class="nav-link" href="mostrarCursos.html"><h5>Horarios</h5></a>
+          <a class="nav-link" href="inscripciones.html"><h5>Inscripciones</h5></a>
+          <a class="nav-link" href="mensajeria.html"><h5>Mensajes</h5></a>
+        </div>
+        <div class="navbar-nav align-items-center">
+          <span class="nav-link me-3">Bienvenido, <span id="usernameDisplay"></span></span>
+          <a class="nav-link" href="#"><img class="navbar_img" src="img/user.png" alt="Usuario" /></a>
+          <button id="logoutButton" class="btn btn-outline-danger btn-sm">Cerrar sesión</button>
         </div>
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
 
   <main class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -41,7 +42,7 @@
     <!-- Filtros -->
     <form class="mb-4">
       <div class="row g-3">
-        <div class="col-md-6">
+        <div class="col-md-3">
           <label for="buscarCurso" class="form-label">Buscar curso</label>
           <div class="input-group">
             <input type="text" id="buscarCurso" class="form-control" placeholder="Nombre del curso..." />
@@ -68,6 +69,9 @@
             <option>Noche</option>
           </select>
         </div>
+        <div class="col-md-3">
+          <a href="agregarCurso.html" class="btn btn-primary agregarCurso">Agregar Curso</a>
+        </div>
       </div>
     </form>
 
@@ -85,19 +89,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><strong>Introducción a la Programación</strong></td>
-            <td>Dr. Carlos Méndez</td>
-            <td>Lunes y Miércoles 14:00 - 16:00</td>
-            <td><span class="badge bg-primary">Ingeniería</span></td>
-            <td>4</td>
-            <td>
-              <div class="progress" style="height: 20px;">
-                <div class="progress-bar bg-success" style="width: 100%;">60/60</div>
-              </div>
-            </td>
-          </tr>
-          <!-- Repite estructura para cada curso -->
+          <!-- Los cursos se cargarán dinámicamente aquí mediante JavaScript -->
         </tbody>
       </table>
     </div>
@@ -105,11 +97,7 @@
     <!-- Paginación -->
     <nav aria-label="Paginación de cursos" class="mt-4">
       <ul class="pagination justify-content-center">
-        <li class="page-item disabled"><a class="page-link">Anterior</a></li>
-        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+        <!-- Los elementos de paginación se generarán dinámicamente -->
       </ul>
     </nav>
   </main>
