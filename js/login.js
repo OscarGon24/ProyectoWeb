@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Usuarios de ejemplo con roles
         const validUsers = {
             'admin': { password: 'admin123', role: 'admin' },
-            'profesor': { password: 'profesor123', role: 'teacher' },
-            'alumno': { password: 'alumno123', role: 'student' }
+            'profesor': { password: 'profesor123', role: 'profesor' },
+            'alumno': { password: 'alumno123', role: 'alumno' }
         };
         
         const user = validUsers[username];
