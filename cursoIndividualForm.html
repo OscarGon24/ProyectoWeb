@@ -1,96 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" ></script>
-    <link rel="stylesheet" href="css/cursosMenuEIndividual.css">
-    <title>Curso</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Editar Curso</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="css/cursoIndividualForm.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg">
-            <div class="navbar container-fluid">
-                <a class="navbar-brand" href="cursosMenu.html"><h3>Universidad</h3></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                      <a class="nav-link active" aria-current="page" href="cursosMenu.html"><h5>Inicio</h5></a>
-                      <a class="nav-link" href="#"><h5>Calificaciones</h5></a>
-                      <a class="nav-link" href="cursosMenu.html"><h5>Cursos</h5></a>
-                      <a class="nav-link" href="#"><h5>Mensajes</h5></a>
-                    </div>
-                    <div class="navbar_orientacion">
-                        <a class="nav-link" href="#">
-                          <img class="navbar_img" src="img/user.png" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
 
-    <button type="button" class="btn btn-success editar"><h4>Guardar</h4></button>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="cursosMenu.html"><h3>Universidad</h3></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav me-auto">
+          <a class="nav-link active" href="cursosMenu.html">Inicio</a>
+          <a class="nav-link" href="#">Calificaciones</a>
+          <a class="nav-link" href="cursosMenu.html">Cursos</a>
+          <a class="nav-link" href="#">Mensajes</a>
+        </div>
+        <a class="nav-link" href="#">
+          <img class="navbar_img" src="img/user.png" alt="Usuario" />
+        </a>
+      </div>
+    </div>
+  </nav>
 
-    <section class="cursos rounded-5">
-        <div class="container d-none d-md-block">
-            <!--Cabecera-->
-            <div class="espaciado">
-                <div>
-                    <label class="label">Curso:</label>
-                    <input type="text" class="form-control input" placeholder="Nombre del curso">
-                </div>
-                <div>
-                    <label class="label">Profesor:</label>
-                    <input type="text" class="form-control input" placeholder="Nombre">
-                    <input type="text" class="form-control input" placeholder="Primer apellido" style="margin-top: 1%;">
-                    <input type="text" class="form-control input" placeholder="Segundo apellido" style="margin-top: 1%;">
-                </div>
-            </div>
-            
-            <!--Contenido-->
-            <div>
-                <h2 class="titulo">Descripción</h2>
-                <textarea class="textarea" name="descripción" id="descripción"></textarea>
-            </div>
-            <div>
-                <h3 class="titulo">Contenido</h3>
+  <!-- FORMULARIO DE EDICIÓN -->
+  <section class="cursos">
+    <div class="container">
+      <h2 class="titulo">Información del Curso</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="nombreCurso">Curso:</label>
+          <input type="text" class="form-control" id="nombreCurso" placeholder="Nombre del curso" />
+        </div>
+        <div class="col-md-6">
+          <label for="nombreProfesor">Profesor:</label>
+          <input type="text" class="form-control" id="nombreProfesor" placeholder="Nombre(s)" />
+          <input type="text" class="form-control" placeholder="Apellido paterno" />
+          <input type="text" class="form-control" placeholder="Apellido materno" />
+        </div>
+      </div>
 
-            </div>
+      <h3 class="titulo">Descripción del Curso</h3>
+      <textarea class="form-control" placeholder="Escribe aquí la descripción general del curso..."></textarea>
+
+      <h3 class="titulo">Contenidos</h3>
+
+      <div id="contenidos">
+        <div class="contenido-section">
+          <label>Título del contenido:</label>
+          <input type="text" class="form-control" placeholder="Ej. Fundamentos del lenguaje" />
+          <label>Temas:</label>
+          <textarea class="form-control" placeholder="Ej. Variables, tipos de datos, estructuras..."></textarea>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-6">
+            <button type="button" class="add-section mt-3" onclick="">+ Añadir contenido</button>
         </div>
 
-        <div class="container d-block d-md-none">
-            <!--Cabecera-->
-            <div class="espaciado">
-                <div>
-                    <label class="label">Curso:</label>
-                    <input type="text" class="form-control input" placeholder="Nombre del curso">
-                </div>
-                <div>
-                    <label class="label">Profesor:</label>
-                    <input type="text" class="form-control input" placeholder="Nombre">
-                </div>
-                <div>
-                    <input type="text" class="form-control input sinLabel" placeholder="Primer apellido">
-                </div>
-                <div>
-                    <input type="text" class="form-control input sinLabel" placeholder="Segundo apellido">
-                </div>
-            </div>
-            
-            <!--Contenido-->
-            <div>
-                <h2 class="titulo">Descripción</h2>
-                <textarea class="textarea" name="descripción" id="descripción"></textarea>
-            </div>
-            <div>
-                <h3 class="titulo">Contenido</h3>
-
-            </div>
+        <div class="col-md-6">
+            <button type="button" class="btn btn-success editar">Guardar</button>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
+
 </body>
 </html>
